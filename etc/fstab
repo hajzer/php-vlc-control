@@ -1,0 +1,22 @@
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# <file system>                           <mount point>                <type>       <options>           <dump>  <pass>
+/dev/mapper/VG_SYSTEM-LV_ROOT             /                            ext4         errors=remount-ro   0       1
+UUID=3cbd41c8-715b-4873-8461-9340cfad979d /boot                        ext2         defaults            0       2
+/dev/mapper/VG_SYSTEM-LV_HOME             /home                        ext4         defaults            0       2
+/dev/mapper/VG_SYSTEM-LV_USR              /usr                         ext4         defaults            0       2
+/dev/mapper/VG_SYSTEM-LV_VAR              /var                         ext4         defaults            0       2
+/dev/mapper/VG_SYSTEM-LV_VARLOG           /var/log                     ext4         defaults            0       2
+/dev/mapper/VG_SYSTEM-LV_VARWWW           /var/www                     ext4         defaults            0       2
+/dev/mapper/VG_SYSTEM-LV_SWAP1            none                         swap         sw                  0       0
+/dev/sr0                                  /media/cdrom0                udf,iso9660  user,noauto         0       0
+
+# VLC.PHP - Mounting points in chroot environment "/var/chroot/deb7"
+/var/www                                  /var/chroot/deb7/var/www     none         bind                0       0
+proc                                      /var/chroot/deb7/proc        proc         nosuid,noexec,nodev 0       0
+sysfs                                     /var/chroot/deb7/sys         sysfs        nosuid,noexec,nodev 0       0
+devpts                                    /var/chroot/deb7/dev/pts     devpts       gid=5,mode=620      0       0
