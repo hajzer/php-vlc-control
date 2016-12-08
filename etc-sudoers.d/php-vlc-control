@@ -1,0 +1,24 @@
+# VLC.PHP - SUDOERS rules
+#
+#EN Server/Host Alias "VLCHOST".
+#SK Alias "VLCHOST" pre server/host.
+Host_Alias  VLCHOST = 127.0.0.1, 192.168.126.93
+
+#EN User alias "UWWW" in which is user "www-data".
+#SK Uzivatelsky alias "UWWW" v ktorom sa nachadza uzivatel "www-data".
+User_Alias	UWWW = www-data
+
+#EN User alias "RWWW" in which is user "root". Executing some command is as this user.
+#SK Uzivatelsky alias "RWWW" v ktorom sa nachadza uzivatel "root" pod ktorym sa ma vykonat nejaky prikaz.
+Runas_Alias	RWWW = root
+
+#EN Command alias "VLC". 
+#SK Prikazovy alias "VLC" which is used to run vlc daemon from PHP script "vlc.php".
+Cmnd_Alias  VLC = /usr/sbin/chroot /var/chroot/deb7 /bin/su -c *
+
+#EN For user which is defined in user alias "UWWW" (www-data) allow executing command/s which is/are 
+#EN defined in command alias "VLC" from host/s which is/are defined in host alias "VLCHOST" as user 
+#EN which is defined in user alias "RWWW" (root).
+#SK Uzivatelovy definovanom v aliasi "UWWW" (www-data) povolime zo stroja definovanom v aliasi 
+#SK "VLCHOST" spustat prikaz definovany aliasom "VLC" pod uzivatelom definovanym aliasom "RWWW" (root).
+UWWW        VLCPHP = (RWWW) NOPASSWD:VLC 
