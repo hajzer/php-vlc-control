@@ -1,2 +1,2 @@
 # php-vlc-control
-PHP script to basic control of the vlc process
+PHP script to basic control (start, stop, ...) of the vlc process on Linux system
